@@ -22,7 +22,7 @@ namespace Mango.Services.AuthAPI.Controllers
         public async Task<IActionResult> Register([FromBody] RegistrationRequestDto model)
         {
             var errorMessage = await _authService.Register(model);
-            if (errorMessage != null)
+            if (!string.IsNullOrEmpty(errorMessage))
             {
                 _response.IsSuccess = false;
                 _response.Message = errorMessage; 
